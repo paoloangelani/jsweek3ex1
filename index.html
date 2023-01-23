@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Form</title>
+</head>
+
+<html>
+
+<body>
+
+    <div class="complete">
+
+        <div class="form">
+            <label>Name: <input id="name" type="text"></label>
+            <label>Surname: <input id="surname" type="text"></label>
+            <label>Date: <input id="date" type="text"></label>
+            <span id="error"></span>
+            <button onclick="publishToTable()">Submit</button>
+        </div>
+
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>surname</th>
+                    <th>date</th>
+                </tr>
+            </thead>
+        </table>
+
+    </div>
+
+    <script>
+        function publishToTable() {
+            const name = document.getElementById('name').value;
+            const surname = document.getElementById('surname').value;
+            const date = document.getElementById('date').value;
+
+            const error = document.getElementById('error');
+            error.innerHTML = (!name || !surname || !date) ? 'Inserire tutti e tre i valori' : '';
+
+            if (name && surname && date) {
+                const tableElement = document.getElementById('table');
+                const trElement = document.createElement('tr');
+                const tbodyElement = document.createElement('tbody');
+                const nameEle = document.createElement('td');
+                const surnameEle = document.createElement('td');
+                const dateEle = document.createElement('td');
+
+                nameEle.innerHTML = name;
+                surnameEle.innerHTML = surname;
+                dateEle.innerHTML = date;
+
+                trElement.appendChild(nameEle);
+                trElement.appendChild(surnameEle);
+                trElement.appendChild(dateEle);
+                tbodyElement.appendChild(trElement);
+                tableElement.appendChild(tbodyElement);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
