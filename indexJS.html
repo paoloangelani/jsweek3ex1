@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Form</title>
+</head>
+
+<html>
+
+<body>
+    <label>Nome: <input type="text" id="name" /></label>
+    <label>Cognome: <input type="text" id="surname" /></label>
+    <label>Data di nascita: <input type="text" id="date" /></label>
+    <button id="button" onclick="publishToTable()">Submit</button>
+
+    <table id="tabella">
+        <tr>
+            <th>name</th>
+            <th>surname</th>
+            <th>date</th>
+        </tr>
+    </table>
+
+    <script>
+        const User = function (name, surname, date) {
+            this.name = name;
+            this.surname = surname;
+            this.date = date;
+        };
+
+        function publishToTable() {
+            let persona = new User(
+                document.getElementById("name").value,
+                document.getElementById("surname").value,
+                document.getElementById("date").value
+            );
+            if (
+                persona.name === "" ||
+                persona.surname === "" ||
+                persona.date === ""
+            ) {
+                alert("Inserire tutti e tre i valori");
+            } else {
+                let table = document.getElementById("tabella");
+                let row = tabella.insertRow(-1);
+                let name = row.insertCell(0);
+                let surname = row.insertCell(1);
+                let date = row.insertCell(2);
+                name.innerHTML = persona.name;
+                surname.innerHTML = persona.surname;
+                date.innerHTML = persona.date;
+            }
+            return false;
+        };
+    </script>
+
+</body>
+
+</html>
